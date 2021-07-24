@@ -1,0 +1,30 @@
+.header {
+  height: 56px;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.header-container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.header__logo {
+  width: max-content;
+  color: var(--primary-color);
+}
+
+/* .header.shadow-bottom {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+} */
+
+.header.border-bottom {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    height: 72px;
+  }
+}

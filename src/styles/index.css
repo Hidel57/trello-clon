@@ -1,0 +1,46 @@
+/*-----------
+    VARS
+-------------*/
+
+:root {
+  /* colors */
+  --primary-color: #2f2f2f;
+  --text-disabled-color: rgba(0, 0, 0, 0.6);
+  --disabled-color: rgba(0, 0, 0, 0.42);
+  --hover-color: rgba(0, 0, 0, 0.6);
+}
+
+/*-----------
+    RESET
+-------------*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition-delay: 9999s;
+  transition-delay: 9999s;
+}

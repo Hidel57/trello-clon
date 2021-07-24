@@ -1,0 +1,88 @@
+/*
+    COMPONENT 
+    INDEX
+    * Props
+        - btn__icon
+        - btn--full
+    * Events
+        - btndisabled
+    * Objetos
+        - btn--refilled
+        - btn--outline
+        - btnneumorphic
+        - btnfacebook
+*/
+
+.btn {
+  height: 40px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.0052857143em;
+  text-decoration: none;
+  color: var(--primary-color);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: transparent;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  vertical-align: middle;
+  transition: background 0.5s;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+.btn:active {
+  background-color: rgba(var(--primary-color), 0.3);
+}
+.btn__icon {
+  padding-right: 8px;
+}
+.btn--full {
+  width: 100%;
+}
+
+.btn--disabled,
+.btn[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn--refilled {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.btn--refilled.btn:hover {
+  background-color: var(--primary-color);
+  opacity: 0.8;
+}
+
+.btn--outlined {
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+}
+
+.btn--outlined {
+  border: 1px dotted var(--primary-color);
+  background-color: transparent;
+}
+
+.btn--outlined.outlined-dotted {
+  border: 1px dotted var(--disabled-color);
+}
+
+.btn--outlined.outlined-dashed {
+  border: 1px dashed var(--disabled-color);
+  background-color: transparent;
+}
+
+.btn--facebook {
+  color: #fff;
+  background-color: #475993;
+}

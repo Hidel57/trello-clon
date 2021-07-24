@@ -1,0 +1,22 @@
+.list {
+  height: 100%;
+  padding-bottom: 42px;
+}
+
+.list__header {
+  height: 36px;
+  display: flex;
+  color: hsl(219, 29%, 12%);
+}
+
+.list__title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-right: auto;
+}
+
+.list__body {
+  height: 100%;
+  overflow-x: hidden;
+}

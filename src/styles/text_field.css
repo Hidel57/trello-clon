@@ -1,0 +1,71 @@
+/*
+    TEXT-FIELD
+    *   input
+    *   TEXT-FIELD
+*/
+
+/* input */
+.input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.009357em;
+  background: none;
+  width: 100%;
+  height: 100%;
+}
+
+.text-field {
+  position: relative;
+}
+
+.text-field--margin {
+  margin: 16px 0;
+}
+
+.text-field__label {
+  position: absolute;
+  color: var(--text-disabled-color);
+  left: 16px;
+  top: 25%;
+  transition: 0.2s;
+}
+
+.text-field__input:hover {
+  border: 1px solid var(--hover-color);
+}
+.text-field__input:focus {
+  border: 2px solid var(--primary-color);
+}
+.text-field__input--textarea {
+  height: 8rem;
+}
+.text-field__input--textarea + .text-field__label {
+  top: 10%;
+}
+
+.text-field__input {
+  border: 1px solid var(--disabled-color);
+  padding: 16px 16px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.text-field__input:valid + .text-field__label {
+  color: var(--text-disabled-color);
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  padding: 0 6px;
+  top: -8px;
+}
+
+.text-field__input:focus + .text-field__label {
+  font-size: 0.8rem;
+  border-radius: 4px;
+  top: -8px;
+  padding: 0 6px;
+  background-color: #fff;
+  color: var(--primary-color);
+}

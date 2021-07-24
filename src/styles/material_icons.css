@@ -1,0 +1,38 @@
+/*
+  * MATERIAL-ICONS
+*/
+
+.material-icons-outlined.red {
+  color: red;
+}
+.material-icons-outlined.green {
+  color: green;
+}
+.material-icons-outlined.blue {
+  color: blue;
+}
+.material-icons-outlined.disabled {
+  color: var(--disabled-color);
+}
+.material-icons-outlined.disabled:hover {
+  color: var(--primary-color);
+}
+
+.material-icons-outlined.md-16 {
+  font-size: 16px;
+}
+.material-icons-outlined.md-18 {
+  font-size: 18px;
+}
+.material-icons-outlined.md-20 {
+  font-size: 20px;
+}
+.material-icons-outlined.md-24 {
+  font-size: 24px;
+}
+.material-icons-outlined.md-36 {
+  font-size: 36px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+}
