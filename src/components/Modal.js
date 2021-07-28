@@ -2,31 +2,41 @@ import '../styles/button_icon.css'
 import '../styles/modal.css'
 import React from 'react';
 import Form from './Form';
+import { connect } from 'react-redux';
+import { hideModal } from '../redux/modalReducer';
 import CardInfo from './CardInfo';
 
-const Modal = () => {
+const Modal = (props) => {
+  const { modal, dispatch } = props
   return (
     <div className="overlay"
-      // style={show ? { display: 'block' } : {}}
+      style={modal.showModal ? { display: 'block' } : {}}
     >
       <div className="modal">
         <div className="modal-container">
-          <div className="modal__close">
-            <button
-              className="icon-btn material-icons-outlined"
-              // onClick={() => setshow(false)}
-            >
-              close
-            </button>
-          </div>
-          <header className="modal__header">
-            <h2 className="modal__title">Modal Title</h2>
-          </header>
-          {/* <CardInfo /> */}
-          <Form />
+            {modal.typeModal === 'form' ?
+              null :
+              <div className="modal__close">
+                <button
+                  className="icon-btn material-icons-outlined"
+                  onClick={() => dispatch(hideModal())}
+                >
+                  close
+                </button>
+              </div>
+            }
+          {modal.typeModal === 'form'
+            ? <Form />
+            : <CardInfo />
+          }
         </div>
       </div>
     </div>
   )
 }
-export default Modal
+
+const mapStateToProps = state => ({
+  modal: state.modalReducer
+})
+
+export default connect(mapStateToProps)(Modal)

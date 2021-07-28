@@ -1,16 +1,26 @@
 import '../styles/board.css'
-import List from "./List"
+import { connect } from 'react-redux';
+import ListContainer from './ListContainer';
 
-const Board = () => {
+const Board = (props) => {
+  const { lists } = props
+  console.log(lists)
+
   return (
     <div className="board">
       <div className="board-container">
-        <div className="board__colum"><List /></div>
-        <div className="board__colum"><List /></div>
-        <div className="board__colum"><List /></div>
+        {lists.map(list => (
+          <div key={list.id} className="board__colum">
+            <ListContainer list={list} />
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-export default Board;
+const mapStateToProps = state => ({
+  lists: state.listsReducer
+})
+
+export default connect(mapStateToProps)(Board);

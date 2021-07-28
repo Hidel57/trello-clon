@@ -1,18 +1,34 @@
+import { connect } from 'react-redux';
+import { showModal } from '../redux/modalReducer';
+import { actionReadTask } from '../redux/taskReducer';
+import { actionDeleteTask } from '../redux/tasksReducer';
 import '../styles/card.css'
 
-const Card = () => {
+const Card = (props) => {
+  const { task, dispatch } = props
+
+  const handleReadTask = id => {
+    dispatch(actionReadTask(id))
+    dispatch(showModal('todo'))
+  }
+
+  const handleEditTask = (id) => {
+    dispatch(showModal('form'))
+    dispatch(actionReadTask(id))
+  }
+
   return (
     <div className="card">
       <div className="card-container">
-        {/* <aside className="card__aside">
-        </aside> */}
-        <div className="card__info">
+        <div className="card__info"
+          onClick={() => handleReadTask(task.id)}
+        >
           <header className="card__header">
-            <h3 className="card__title">Card Title</h3>
+            <h3 className="card__title">{task.title}</h3>
           </header>
           <div className="card__body">
             <p className="card__text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores ipsam accusantium iure nostrum ducimus error maxime velit aliquam perspiciatis nihil voluptatum ex incidunt obcaecati ab fuga sunt, magni sapiente voluptas?
+              {task.text}
             </p>
           </div>
         </div>
@@ -20,11 +36,13 @@ const Card = () => {
           <div className="icon-btn-group">
             <button
               className="icon-btn size-24 material-icons-outlined md-16 disabled"
+              onClick={() => handleEditTask(task.id)}
             >
               edit
             </button>
             <button
               className="icon-btn size-24 material-icons-outlined md-16 disabled"
+              onClick={() => dispatch(actionDeleteTask(task.id))}
             >
               delete
             </button>
@@ -34,5 +52,6 @@ const Card = () => {
     </div>
   );
 }
- 
-export default Card;
+
+export default connect()(Card)
+

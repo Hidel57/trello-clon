@@ -1,9 +1,9 @@
 .card {
   border-radius: 8px;
   height: max-content;
-  background-color: #fff;
+  background-color: var(--surface-dp1-color);
   width: 100%;
-  max-width: 360px;
+  /* max-width: 360px; */
   box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2), 1px -1px 1px rgba(0, 0, 0, 0.2);
   margin-bottom: 8px;
 }
@@ -11,11 +11,6 @@
   box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4), 1px -1px 1px rgba(0, 0, 0, 0.4);
 }
 
-@media (min-width: 768px) {
-  .card {
-    min-width: 320px;
-  }
-}
 .card__header {
   padding-top: 16px;
   margin: 0 16px;
