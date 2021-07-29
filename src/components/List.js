@@ -6,6 +6,7 @@ import '../styles/material_icons.css'
 import Card from "./Card";
 import { showModal } from '../redux/modalReducer'
 import { addListId } from '../redux/taskReducer'
+import { Droppable } from 'react-beautiful-dnd'
 
 const List = (props) => {
   console.log(props)
@@ -17,40 +18,50 @@ const List = (props) => {
   }
 
   return (
-    <div className="list">
-      <header className="list__header">
-        <h2 className="list__title">{ list.title }</h2>
-        <div className="icon-btn-group">
-          <button
-            className="icon-btn size-28 icon-btn-radius material-icons-outlined md-20"
+    <Droppable droppableId={list.id.toString()}>
+      {provided => (
+        <div className="list">
+          <header className="list__header">
+            <h2 className="list__title">{ list.title }</h2>
+            <div className="icon-btn-group">
+              <button
+                className="icon-btn size-28 icon-btn-radius material-icons-outlined md-20"
+              >
+                add
+              </button>
+              <button
+                className="icon-btn size-28 icon-btn-radius material-icons-outlined md-20"
+              >
+                edit
+              </button>
+              <button
+                className="icon-btn size-28 icon-btn-radius material-icons-outlined md-20"
+              >
+                delete
+              </button>
+            </div>
+          </header>
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className="list__body scroll"
           >
-            add
-          </button>
-          <button
-            className="icon-btn size-28 icon-btn-radius material-icons-outlined md-20"
-          >
-            edit
-          </button>
-          <button
-            className="icon-btn size-28 icon-btn-radius material-icons-outlined md-20"
-          >
-            delete
-          </button>
+            {tasksForList.map((task, index) => (
+              <Card key={task.id} task={task} index={(index)} />
+            ))}
+
+            <button
+              className="btn btn--outlined btn--full outlined-dashed"
+              onClick={() => handleAddTaskForList(list.id)}
+            >
+              <span className=" btn__icon material-icons-outlined">add</span>
+              Add New Task
+            </button>
+            {provided.placeholder}
+          </div>
         </div>
-      </header>
-      <div className="list__body scroll">
-        {tasksForList.map(task => (
-          <Card key={task.id} task={task} />
-        ))}
-        <button
-          className="btn btn--outlined btn--full outlined-dashed"
-          onClick={() => handleAddTaskForList(list.id)}
-        >
-          <span className=" btn__icon material-icons-outlined">add</span>
-          Add New Task
-        </button>
-      </div>
-    </div>
+      )}
+    </Droppable>
   );
 }
 

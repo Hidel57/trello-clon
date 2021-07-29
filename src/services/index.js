@@ -41,10 +41,10 @@ export const deleteTask = id => {
     setData(newtasksDB)
 }
 
-export const changeStateTask = id => {
+export const changeStateTask = (id, listId) => {
     const tasksDB = getData('trello')
     let index = tasksDB.findIndex(todo => todo.id === id)
-    tasksDB[index].completed = !tasksDB[index].completed
+    tasksDB[index].listId = listId
     setData(tasksDB)        
 }
 

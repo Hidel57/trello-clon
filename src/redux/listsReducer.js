@@ -1,7 +1,7 @@
 const initialState = [
-  { id: 543553, title: 'To do', tasks: [] },
-  { id: 543554, title: 'In progress', tasks: [] },
-  { id: 543555, title: 'Complete', tasks: [] }
+  { id: 543553, title: 'To do' },
+  { id: 543554, title: 'In progress' },
+  { id: 543555, title: 'Complete' }
 ]
 const listsReducer = (state=initialState, action) => {
   switch (action.type) {

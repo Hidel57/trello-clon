@@ -1,4 +1,4 @@
-import { readTasks } from '../services'
+import { changeStateTask, readTasks } from '../services'
 import { addTask } from '../services'
 import { editTask } from '../services'
 import { deleteTask } from '../services'
@@ -10,6 +10,7 @@ import { deleteTask } from '../services'
 const ADD_TASK = 'ADD_TASK'
 const DELETE_TASK = 'DELETE_TASK'
 const EDIT_TASK = 'EDIT_TASK'
+const MOVE_TASK = 'MOVE_TASK'
 
 const tasksReducer = (state=readTasks(), action) => {
   switch (action.type) {
@@ -34,6 +35,28 @@ const tasksReducer = (state=readTasks(), action) => {
     case DELETE_TASK:
       deleteTask(action.id)
       return state.filter(task => task.id !== action.id)
+    case MOVE_TASK:
+      const {
+        droppableIdStart,
+        droppableIdEnd,
+        // droppableIndexStart,
+        // droppableIndexEnd,
+        draggableId,
+        droppableId
+      } = action.payload
+      console.log(action.payload)
+      // Move within the same list
+      console.log(droppableId)
+      // Move card from one list to another
+      if (droppableIdStart !== droppableIdEnd) {
+        changeStateTask(parseInt(draggableId), parseInt(droppableIdEnd))
+        return state.map(task =>
+          task.id === parseInt(draggableId) ?
+            { ...task, listId: parseInt(droppableIdEnd) } :
+            task
+        )        
+      }
+      return state
     default: return state
   }
 }
@@ -48,3 +71,21 @@ export default tasksReducer
 export const actionAddTask = task => ({ type: ADD_TASK, task })
 export const actionEditTask = (id, task) => ({ type: EDIT_TASK, id, task })
 export const actionDeleteTask = id => ({ type: DELETE_TASK, id })
+export const actionMoveTask = (
+  droppableIdStart,
+  droppableIdEnd,
+  droppableIndexStart,
+  droppableIndexEnd,
+  draggableId,
+  droppableId
+) => ({
+  type: MOVE_TASK,
+  payload: {
+    droppableIdStart,
+    droppableIdEnd,
+    droppableIndexStart,
+    droppableIndexEnd,
+    draggableId,
+    droppableId
+  }
+})
