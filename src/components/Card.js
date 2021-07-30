@@ -5,6 +5,8 @@ import { actionReadTask } from '../redux/taskReducer';
 import { actionDeleteTask } from '../redux/listsReducer';
 import '../styles/card.css'
 
+import PropTypes from 'prop-types'
+
 const Card = (props) => {
   const { task, listId, index, dispatch } = props
   const handleReadTask = (id, listId) => {
@@ -41,13 +43,13 @@ const Card = (props) => {
             <footer className="card__footer flex-end">
               <div className="icon-btn-group">
                 <button
-                  className="icon-btn size-24 material-icons-outlined md-16 disabled"
+                  className="icon-btn size-24 material-icons-outlined md-16 dark"
                   onClick={() => handleEditTask(task.id, listId)}
                 >
                   edit
                 </button>
                 <button
-                  className="icon-btn size-24 material-icons-outlined md-16 disabled"
+                  className="icon-btn size-24 material-icons-outlined md-16 dark"
                   onClick={() => dispatch(actionDeleteTask(task.id, listId))}
                 >
                   delete
@@ -59,6 +61,16 @@ const Card = (props) => {
       )}
     </Draggable>
   );
+}
+
+Card.propTypes = {
+  index: PropTypes.number,
+  listId: PropTypes.string,
+  task: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    text: PropTypes.string,
+  })
 }
 
 export default connect()(Card)

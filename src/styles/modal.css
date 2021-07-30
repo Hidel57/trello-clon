@@ -5,7 +5,7 @@
 .overlay {
   display: none; /*toggle*/
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   left: 0;
   top: 0;
   bottom: 0;
@@ -19,7 +19,7 @@
 
 .modal {
   position: relative;
-  background-color: #fefefe;
+  background-color: var(--surface-dp3-color);
   top: 96px;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -32,15 +32,11 @@
 }
 
 .modal-container {
-  padding: 1rem;
+  padding: 1rem 1rem 2rem;
 }
 
 .modal__close {
   display: flex;
   width: 100%;
   justify-content: flex-end;
-}
-
-.modal__header {
-  margin-bottom: 1rem;
 }

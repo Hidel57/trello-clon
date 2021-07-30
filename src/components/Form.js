@@ -8,6 +8,8 @@ import { actionAddTask, actionEditTask } from '../redux/listsReducer'
 import { actionClearTask } from '../redux/taskReducer'
 import { hideModal } from '../redux/modalReducer'
 
+import PropTypes from 'prop-types'
+
 const Form = (props) => {
   const { taskValues, dispatch } = props
   const [formValues, setformValues] = useState(taskValues)
@@ -58,7 +60,7 @@ const Form = (props) => {
     <form
       onSubmit={hanldeSubmit}
     >
-      <h2 className="headline2">
+      <h2 className="headline2 text-center mt-16">
         {formValues.id === '' ? 'Add Task' : 'Edit Task' }
       </h2>
 
@@ -94,7 +96,7 @@ const Form = (props) => {
       }
 
       <button
-        className="btn btn--outlined btn--full mb-16"
+        className="btn btn--outlined btn--full"
         onClick={()=> handleClearFormValues()}
       >Cancel</button>
     </form>
@@ -104,5 +106,14 @@ const Form = (props) => {
 const mapStateToProps = state => ({
   taskValues: state.taskReducer
 })
+
+Form.propTypes = {
+  taskValues: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    text: PropTypes.string,
+    listId: PropTypes.string
+  })
+}
 
 export default connect(mapStateToProps)(Form);

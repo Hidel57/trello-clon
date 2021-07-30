@@ -10,26 +10,26 @@
 
 /* Estilos barra (thumb) de scroll */
 .scroll::-webkit-scrollbar-thumb {
-  background: grey;
+  background: var(--primary-color);
   border-radius: 4px;
 }
 
 .scroll::-webkit-scrollbar-thumb:active {
-  background-color: black;
+  background-color: var(--primary-color-variant);
 }
 
 .scroll::-webkit-scrollbar-thumb:hover {
-  background: black;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  background: var(--primary-color-variant);
+  box-shadow: 0 0 2px 1px rgba(150, 103, 103, 0.2);
 }
 
 /* Estilos track de scroll */
 .scroll::-webkit-scrollbar-track {
-  background: white;
+  background: var(--surface-dp1-color);
   border-radius: 4px;
 }
 
 .scroll::-webkit-scrollbar-track:hover,
 .scroll::-webkit-scrollbar-track:active {
-  background: #d4d4d4;
+  background: #c6c6c6;
 }

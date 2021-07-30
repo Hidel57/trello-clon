@@ -1,12 +1,11 @@
 .list {
   height: 100%;
-  padding-bottom: 42px;
 }
 
 .list__header {
   height: 36px;
   display: flex;
-  color: hsl(219, 29%, 12%);
+  color: var(--primary-color);
 }
 
 .list__title {
@@ -17,6 +16,13 @@
 }
 
 .list__body {
-  height: 100%;
+  height: max-content;
+  max-height: 78vh;
   overflow-x: hidden;
+}
+
+@media screen and (min-width: 992px) {
+  .list__body {
+    max-height: 72vh;
+  }
 }

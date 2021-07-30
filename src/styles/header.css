@@ -2,12 +2,14 @@
   height: 56px;
   z-index: 1;
   background-color: var(--surface-dp1-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .header-container {
   display: flex;
   height: 100%;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header__logo {
@@ -16,7 +18,7 @@
 }
 
 .header.shadow-bottom {
-  box-shadow: 2px 2px 4px #000;
+  box-shadow: 2px 2px 4px #6f6f6f;
 }
 
 /* .header.border-bottom {

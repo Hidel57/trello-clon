@@ -1,8 +1,12 @@
 import '../styles/board.css'
+import '../styles/scroll.css'
+
 import { connect } from 'react-redux';
 import List from './List';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { actionMoveTask } from '../redux/listsReducer';
+
+import PropTypes from 'prop-types'
 
 const Board = (props) => {
   const { lists, dispatch } = props
@@ -27,7 +31,7 @@ const Board = (props) => {
       <div className="board">
         <div className="board-container">
           {lists.map(list => (
-            <div key={list.id} className="board__colum">
+            <div key={list.id} className="board__colum scroll">
               <List list={list} />
             </div>
           ))}
@@ -40,5 +44,9 @@ const Board = (props) => {
 const mapStateToProps = state => ({
   lists: state.listsReducer
 })
+
+Board.propTypes = {
+  lists: PropTypes.array
+}
 
 export default connect(mapStateToProps)(Board);

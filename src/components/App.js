@@ -1,15 +1,16 @@
-import React from 'react'
+import '../styles/App.css'
+
 import Header from './Header'
 import Board from './Board'
 import Modal from './Modal'
 
 const App = () => {
   return (
-    <React.Fragment>
+    <div className="App">
       <Header />
       <Board />
       <Modal />
-    </React.Fragment>
+    </div>
   );
 }
 

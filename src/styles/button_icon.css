@@ -19,10 +19,8 @@
 }
 .icon-btn::after,
 .icon-btn::before {
-  background-color: #000;
   position: absolute;
   border-radius: 50%;
-  opacity: 0;
   pointer-events: none;
   top: 0;
   left: 0;
@@ -33,11 +31,11 @@
 }
 
 .icon-btn:hover:before {
-  opacity: 0.04;
+  background-color: var(--hover-color);
 }
 
 .icon-btn:focus:before {
-  opacity: 0.12;
+  background-color: var(--selected-color);
 }
 /** group btn-icons **/
 

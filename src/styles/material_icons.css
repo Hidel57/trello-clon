@@ -1,7 +1,9 @@
 /*
   * MATERIAL-ICONS
 */
-
+.material-icons-outlined.dark {
+  color: var(--font-high-color);
+}
 .material-icons-outlined.red {
   color: red;
 }

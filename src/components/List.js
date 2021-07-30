@@ -9,8 +9,9 @@ import { addListId } from '../redux/taskReducer'
 import { Droppable } from 'react-beautiful-dnd'
 import { connect } from 'react-redux'
 
+import PropTypes from 'prop-types'
+
 const List = (props) => {
-  console.log(props)
   const { list, dispatch } = props
 
   const handleAddTaskForList = listId => {
@@ -27,6 +28,7 @@ const List = (props) => {
             <div className="icon-btn-group">
               <button
                 className="icon-btn size-28 icon-btn-radius material-icons-outlined md-20"
+                onClick={() => handleAddTaskForList(list.id)}
               >
                 add
               </button>
@@ -64,6 +66,14 @@ const List = (props) => {
       )}
     </Droppable>
   );
+}
+
+List.propTypes = {
+  list: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    tasks: PropTypes.array
+  })
 }
 
 export default connect()(List);
