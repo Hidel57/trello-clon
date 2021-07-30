@@ -2,20 +2,19 @@ import { Draggable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 import { showModal } from '../redux/modalReducer';
 import { actionReadTask } from '../redux/taskReducer';
-import { actionDeleteTask } from '../redux/tasksReducer';
+import { actionDeleteTask } from '../redux/listsReducer';
 import '../styles/card.css'
 
 const Card = (props) => {
-  const { task, index, dispatch } = props
-
-  const handleReadTask = id => {
-    dispatch(actionReadTask(id))
+  const { task, listId, index, dispatch } = props
+  const handleReadTask = (id, listId) => {
+    dispatch(actionReadTask(id, listId))
     dispatch(showModal('todo'))
   }
 
-  const handleEditTask = (id) => {
+  const handleEditTask = (id, listId) => {
     dispatch(showModal('form'))
-    dispatch(actionReadTask(id))
+    dispatch(actionReadTask(id, listId))
   }
 
   return (
@@ -28,7 +27,7 @@ const Card = (props) => {
         >
           <div className="card-container">
             <div className="card__info"
-              onClick={() => handleReadTask(task.id)}
+              onClick={() => handleReadTask(task.id, listId)}
             >
               <header className="card__header">
                 <h3 className="card__title">{task.title}</h3>
@@ -43,13 +42,13 @@ const Card = (props) => {
               <div className="icon-btn-group">
                 <button
                   className="icon-btn size-24 material-icons-outlined md-16 disabled"
-                  onClick={() => handleEditTask(task.id)}
+                  onClick={() => handleEditTask(task.id, listId)}
                 >
                   edit
                 </button>
                 <button
                   className="icon-btn size-24 material-icons-outlined md-16 disabled"
-                  onClick={() => dispatch(actionDeleteTask(task.id))}
+                  onClick={() => dispatch(actionDeleteTask(task.id, listId))}
                 >
                   delete
                 </button>

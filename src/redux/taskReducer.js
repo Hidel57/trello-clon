@@ -27,12 +27,12 @@ const taskReducer = (state = taskData, action) => {
         listId: action.listId
       }
     case READ_TASK:
-      const data = readTask(action.id)
+      const data = readTask(action.id, action.listId)
       return {
         id: data.id,
         title: data.title,
         text: data.text,
-        listId: data.listId
+        listId: action.listId
       }
     case CLEAR_TASK:
       return {
@@ -49,8 +49,10 @@ const taskReducer = (state = taskData, action) => {
 * ACTIONS
 */
 
-export const addListId = (listId) => ({ type: ADD_LIST_ID, listId })
-export const actionReadTask = (id) => ({ type: READ_TASK, id })
+export const addListId = listId => ({ type: ADD_LIST_ID, listId })
+export const actionReadTask = (id, listId) => ({
+  type: READ_TASK, id, listId
+})
 export const actionClearTask = () => ({ type: CLEAR_TASK })
 
 export default taskReducer

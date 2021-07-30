@@ -4,7 +4,7 @@ import '../styles/button.css'
 import { useState } from "react"
 import { connect } from 'react-redux'
 
-import { actionAddTask, actionEditTask } from '../redux/tasksReducer'
+import { actionAddTask, actionEditTask } from '../redux/listsReducer'
 import { actionClearTask } from '../redux/taskReducer'
 import { hideModal } from '../redux/modalReducer'
 
@@ -24,28 +24,26 @@ const Form = (props) => {
       setError('Complete the description text field')
       return
     }
-
-    
     formValues.id === '' ?
-      handleAddTask(formValues) :
-      handleEditTask(formValues.id, formValues)
+      handleAddTask(formValues, formValues.listId) :
+      handleEditTask(formValues.id, formValues, formValues.listId)
   }
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setformValues({
       ...formValues,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleAddTask = (task) => {
-    dispatch(actionAddTask(task))
+  const handleAddTask = (task, listId) => {
+    dispatch(actionAddTask(task, listId))
     dispatch(actionClearTask())
     dispatch(hideModal())
   }
 
-    const handleEditTask = (id, task) => {
-    dispatch(actionEditTask(id, task))
+    const handleEditTask = (id, task, listId) => {
+    dispatch(actionEditTask(id, task, listId))
     dispatch(actionClearTask())
     dispatch(hideModal())
   }

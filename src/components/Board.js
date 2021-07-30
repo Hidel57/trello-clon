@@ -1,14 +1,13 @@
 import '../styles/board.css'
 import { connect } from 'react-redux';
-import ListContainer from './ListContainer';
+import List from './List';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { actionMoveTask } from '../redux/tasksReducer';
+import { actionMoveTask } from '../redux/listsReducer';
 
 const Board = (props) => {
   const { lists, dispatch } = props
-
   const onDragEnd = (results) => {
-    const { source, destination, draggableId, droppableId } = results
+    const { source, destination, draggableId } = results
     if (!destination) return
     if (source.index !== destination.index ||
       source.droppableId !== destination.droppableId
@@ -19,7 +18,6 @@ const Board = (props) => {
         source.index,
         destination.index,
         draggableId,
-        droppableId
       ))
     }
   }
@@ -30,7 +28,7 @@ const Board = (props) => {
         <div className="board-container">
           {lists.map(list => (
             <div key={list.id} className="board__colum">
-              <ListContainer list={list} />
+              <List list={list} />
             </div>
           ))}
         </div>

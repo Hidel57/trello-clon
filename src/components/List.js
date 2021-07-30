@@ -7,10 +7,11 @@ import Card from "./Card";
 import { showModal } from '../redux/modalReducer'
 import { addListId } from '../redux/taskReducer'
 import { Droppable } from 'react-beautiful-dnd'
+import { connect } from 'react-redux'
 
 const List = (props) => {
   console.log(props)
-  const { list, tasksForList, dispatch } = props
+  const { list, dispatch } = props
 
   const handleAddTaskForList = listId => {
     dispatch(addListId(listId))
@@ -46,8 +47,8 @@ const List = (props) => {
             {...provided.droppableProps}
             className="list__body scroll"
           >
-            {tasksForList.map((task, index) => (
-              <Card key={task.id} task={task} index={(index)} />
+            {list.tasks.map((task, index) => (
+              <Card key={task.id} task={task} index={index} listId={list.id} />
             ))}
 
             <button
@@ -65,4 +66,4 @@ const List = (props) => {
   );
 }
 
-export default List;
+export default connect()(List);

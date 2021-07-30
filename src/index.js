@@ -8,6 +8,15 @@ import { createStore } from 'redux';
 import rootReducer from './redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { initData } from './services';
+
+const initialState = [
+  { id: "543553", title: 'To do', tasks: [] },
+  { id: "543554", title: 'In progress', tasks: [] },
+  { id: "543555", title: 'Complete', tasks: [] }
+]
+
+initData('trello', initialState)
 
 const store = createStore(
   rootReducer,
